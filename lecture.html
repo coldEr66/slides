@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="coldEr66">
+  <title>AI 工作坊</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2//css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2//css/theme/black.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'https://unpkg.com/reveal.js@3.9.2//css/print/pdf.css' : 'https://unpkg.com/reveal.js@3.9.2//css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="https://unpkg.com/reveal.js@3.9.2//lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">AI 工作坊</h1>
+  <h2 class="author">coldEr66</h2>
+</section>
+
+<section><section id="課程大綱" class="titleslide slide level1"><h1>課程大綱</h1></section><section id="ai與實作" class="slide level2">
+<h1>AI與實作</h1>
+<ul>
+<li>AI小學堂</li>
+<li>策略實作</li>
+</ul>
+</section><section id="何謂ai" class="slide level2">
+<h1>何謂AI？</h1>
+<ul>
+<li>if-else 判斷式</li>
+<li>暴力搜尋</li>
+<li>神經網路</li>
+</ul>
+</section><section id="if-else-判斷式" class="slide level2">
+<h1>if-else 判斷式</h1>
+<ul>
+<li>OOXX</li>
+<li>XXXX</li>
+</ul>
+</section><section id="暴力搜尋" class="slide level2">
+<h1>暴力搜尋</h1>
+<ul>
+<li>踩地雷</li>
+<li>五子棋</li>
+<li>OOXX</li>
+</ul>
+</section><section id="decision-tree" class="slide level2">
+<h1>decision tree</h1>
+<ul>
+<li><img src="TIC_TAC.jpg" title="fig:" alt="alt text" /></li>
+</ul>
+</section></section>
+<section><section id="神經網路" class="titleslide slide level1"><h1>神經網路</h1></section><section id="模型" class="slide level2">
+<h1>模型</h1>
+<ul>
+<li><img src="ANN.png" alt="alt text" /></li>
+<li>矩陣乘法</li>
+</ul>
+</section><section id="激活函數" class="slide level2">
+<h1>激活函數</h1>
+<ul>
+<li>sigmoid</li>
+<li>tanh</li>
+<li>ReLu</li>
+</ul>
+</section><section id="目標" class="slide level2">
+<h1>目標</h1>
+<ul>
+<li>越接近答案越好</li>
+<li>loss function</li>
+<li>back-propagation</li>
+</ul>
+</section></section>
+<section><section id="把策略變成程式" class="titleslide slide level1"><h1>把策略變成程式</h1></section><section id="語法介紹" class="slide level2">
+<h1>語法介紹</h1>
+<p><code>程式碼</code></p>
+</section></section>
+<section><section id="ooxx-xxoo" class="titleslide slide level1"><h1>OOXX XXOO</h1></section><section id="無腦玩法" class="slide level2">
+<h1>無腦玩法</h1>
+<ul>
+<li>如果把九宮格編號上數字鍵盤的0~8，我們每次都下數字最小而且還是空的的格子</li>
+</ul>
+</section><section id="這樣怎麼可能贏" class="slide level2">
+<h1>這樣怎麼可能贏？</h1>
+<ul>
+<li>但沒關係，這也是一種策略</li>
+</ul>
+</section><section id="再來一個無腦玩法" class="slide level2">
+<h1>再來一個無腦玩法</h1>
+<ul>
+<li>一樣把九宮格每一格編號，我們每一輪都random一個數字，如果那格被下過了我就再random一個直到一個空的格子我就下在那。</li>
+</ul>
+</section><section id="這樣依舊不是一個勝率很高的策略" class="slide level2">
+<h1>這樣依舊不是一個勝率很高的策略</h1>
+</section><section id="思考策略" class="slide level2">
+<h1>思考策略</h1>
+<ul>
+<li>大家都會玩圈圈叉叉吧？</li>
+</ul>
+</section><section id="要怎麼實作呢" class="slide level2">
+<h1>要怎麼實作呢？</h1>
+<pre><code>if available[4] == 1:
+    decision = 4
+    
+command = moves.place(decision)
+client.Game.sendBatchCommand([command])</code></pre>
+</section><section id="下在邊比較好還是角" class="slide level2">
+<h1>下在邊比較好還是角？</h1>
+<p><code>程式碼(下角)</code></p>
+</section><section id="上面兩個都沒有選擇了就下在邊吧" class="slide level2">
+<h1>上面兩個都沒有選擇了就下在邊吧！</h1>
+<p><code>程式碼(下邊)</code></p>
+</section><section id="section" class="slide level2">
+<h1></h1>
+<ul>
+<li>把剛剛的那三個策略寫成程式，並組起來，就是一個勝率稍微還可以接受的策略了</li>
+</ul>
+</section><section id="還有其他方式嗎" class="slide level2">
+<h1>還有其他方式嗎？</h1>
+</section><section id="practice" class="slide level2">
+<h1>Practice!!</h1>
+</section></section>
+<section><section id="踩地雷" class="titleslide slide level1"><h1>踩地雷</h1></section><section id="自己試試看吧" class="slide level2">
+<h1>自己試試看吧！</h1>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@3.9.2//lib/js/head.min.js"></script>
+  <script src="https://unpkg.com/reveal.js@3.9.2//js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'https://unpkg.com/reveal.js@3.9.2//lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'https://unpkg.com/reveal.js@3.9.2//plugin/zoom-js/zoom.js', async: true },
+          { src: 'https://unpkg.com/reveal.js@3.9.2//plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
